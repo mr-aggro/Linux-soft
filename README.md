@@ -30,3 +30,18 @@
 
     sudo apt-get install screenfetch inxi
     Для подробной информации о железе устройства нужно ввеси в терминале: inxi -F
+Указатель мыши:
+
+    La Capitaine: https://github.com/keeferrourke/capitaine-cursors
+
+Шрифты:
+
+        sudo apt-get install fonts-cantarell
+
+        Window Title: Cantarell Bold
+
+        GUI: Cantarell Regular
+
+        Doc: Sans Regular
+
+        Monospace: Monospace Regular
