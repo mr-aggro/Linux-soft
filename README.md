@@ -45,3 +45,28 @@
         Doc: Sans Regular
 
         Monospace: Monospace Regular
+        
+Настройка метрики сетевых интерфейсов:
+        sudo nano /etc/dhcpcd.conf
+            
+        For DHCP:
+        
+            interface eth0
+        
+            metric <num>
+        
+            interface wlan0
+        
+            metric <num>
+            
+       For Static:
+       
+            interface eth0
+            
+            static ip_address=192.168.1.16/24
+            
+            static routers=192.168.1.1
+            
+            static domain_name_servers=127.0.0.1
+            
+            metric <num>
