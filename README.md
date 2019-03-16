@@ -1,4 +1,8 @@
 # Linux-soft
+EСТАНОВКА ПОДДЕРЖКИ Serial EPS32/Arduino
+
+    arduino-linux-setup.sh
+
 УСТАНОВКА KRITA ПРОФИССИОНАЛЬНОГО ГРАФИЧЕСКОГО РЕДАКТОРА
 
     from PPA
