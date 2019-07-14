@@ -79,3 +79,6 @@ EСТАНОВКА ПОДДЕРЖКИ Serial EPS32/Arduino
 
             cat | command
             
+            
+localectl set-keymap ruwin_alt-UTF-8
+            
