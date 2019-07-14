@@ -74,3 +74,8 @@ EСТАНОВКА ПОДДЕРЖКИ Serial EPS32/Arduino
             static domain_name_servers=127.0.0.1
             
             metric <num>
+           
+Запуск программ в pipe:
+
+            cat | command
+            
