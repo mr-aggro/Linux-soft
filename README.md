@@ -80,5 +80,7 @@ EСТАНОВКА ПОДДЕРЖКИ Serial EPS32/Arduino
             cat | command
             
             
-localectl set-keymap ruwin_alt-UTF-8
+localectl set-keymap ruwin_alt_sh-UTF-8
+https://wiki.archlinux.org/index.php/Software_access_point
+https://losst.ru/ustanovka-archlinux-2016
             
