@@ -1,0 +1,53 @@
+Yes, Cython is intended to be used as stated - as a way of simplifying writing C/C++ extension modules for the CPython python runtime.
+
+But, as nudzo alludes to in this comment, you can use the --embed switch at the command line prompt.
+
+Here is an extremely simple example. I am peforming this from a Debian Sid workstation, using python3 and cython3..
+
+Make sure you have python-dev or python3-dev packages installed beforehand.
+
+1) Create a very simple Python program called hello.py
+
+$ cat hello.py
+
+print("Hello World!")
+
+2) Use Cython to compile your python program into C...
+
+cython3 --embed -o hello.c hello.py
+3) Use GCC to compile hello.c into an executable file called hello...
+
+gcc -Os -I /usr/include/python3.3m -o hello hello.c -lpython3.3m -lpthread -lm -lutil -ldl
+4) You end up with a file called hello ...
+
+$ file hello
+
+hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.32, BuildID[sha1]=006f45195a26f1949c6ed051df9cbd4433e1ac23, not stripped
+
+$ ldd hello
+linux-vdso.so.1 (0x00007fff273fe000)
+libpython3.3m.so.1.0 => /usr/lib/x86_64-linux-gnu/libpython3.3m.so.1.0 (0x00007fc61dc2c000)
+libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc61da0f000)
+libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fc61d70b000)
+libutil.so.1 => /lib/x86_64-linux-gnu/libutil.so.1 (0x00007fc61d508000)
+libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc61d304000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc61cf5a000)
+librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fc61cd52000)
+libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007fc61cb28000)
+libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007fc61c90f000)
+/lib64/ld-linux-x86-64.so.2 (0x00007fc61e280000)
+In this case, the executable is dynamically linked to Python 3.3 on my Debian system.
+
+5) run hello...
+
+$ ./hello
+
+Hello World!
+
+As you can see, using this method you can basically use Cython to convert your pure Python applications into executable, compiled object code.
+
+I am using this method for vastly more complex applications - for example, a full blown Python/PySide/Qt application.
+
+For different versions of Python, you tailor the gcc -I and -l switches to suit.
+
+You can then package the executable as a distribution (.deb, etc.) file, without having to package the Python/PySide/Qt files - the advantage being that your application should still be able to run even after a distribution update to the same versions of Python, etc. on that distribution.
